@@ -36,8 +36,5 @@ public class StreamTest {
         //创建一个从1到10的数列Stream
         //iterate方法的两个参数，第一个为初始数据，第二个为一个Operator接口
         Stream.iterate(1, x->x+1).limit(10).forEach(System.out::println);
-
-
-
     }
 }
