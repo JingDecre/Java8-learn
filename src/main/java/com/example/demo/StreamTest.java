@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -67,5 +68,28 @@ public class StreamTest {
         Stream.concat(streamFir, streamSec).forEach(System.out::print);
 
         //流排序 sorted 无参
+        Arrays.asList(3,1,2,5,3,4).stream().sorted().forEach(System.out::println);
+        System.out.println();
+
+        //流排序 自定义规则 按照字符长度排序
+        Arrays.asList("ae", "f", "gqet","ertyu","zxc").stream().sorted((x,y) -> Integer.compare(x.length(), y.length())).forEach(System.out::println);
+
+        //若两个字符串长度相同，按照字母顺序排列，可以用Comparator的thenComparaimg()
+        Arrays.asList("ae", "aa","acf", "baec", "cs", "bg").stream().sorted(
+                Comparator.comparing(String::length).thenComparing(String::compareTo)
+        ).forEach(System.out::println);
+
+        System.out.println();
+        //反序排序Comparator的reversed
+        //数字
+        Arrays.asList(1,3,4,2,6).stream().sorted(
+                Comparator.reverseOrder()
+        ).forEach(System.out::print);
+        System.out.println();
+
+        //字符串
+        Arrays.asList("ae", "cf", "ag", "dec", "run", "caac").stream().sorted(
+                Comparator.comparing(String::length).reversed()
+        ).forEach(System.out::print);
     }
 }
