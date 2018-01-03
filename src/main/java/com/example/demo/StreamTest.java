@@ -36,5 +36,36 @@ public class StreamTest {
         //创建一个从1到10的数列Stream
         //iterate方法的两个参数，第一个为初始数据，第二个为一个Operator接口
         Stream.iterate(1, x->x+1).limit(10).forEach(System.out::println);
+
+        //过滤操作,filter
+        Arrays.asList("Abc", "aa", "Ab", "op", "IQ").stream().filter(s->Character.isUpperCase(s.charAt(0))).forEach(System.out::println);
+
+        //过滤操作,去重distinct
+        Arrays.asList("a", "c","ac","c", "aa", "a").stream().distinct().forEach(System.out::println);
+
+        //变换操作,Map
+        Arrays.asList("hadfa", "abc", "adce", "yui").stream().map(s->s.toUpperCase()+",").forEach(System.out::print);
+
+        //变换操作, flatMap 高纬度流变为低纬度流
+        String [] str1 = {"a", "b", "c"};
+        String [] str2 = {"d", "e", "f"};
+        String [] str3 = {"a", "g", "h"};
+        Arrays.asList(str1,str2,str3).stream().flatMap(strings -> Stream.of(strings)).map(s -> s+",").forEach(System.out::print);
+        System.out.println();
+        //拆分合并流操作 limit 返回前面n个元素
+        Arrays.asList(1,2,3,4,5).stream().limit(3).forEach(System.out::print);
+
+        System.out.println();
+        //拆分合并流操作 skip 跳过Stream前的n个元素
+        Arrays.asList(1,3,4,5,7,2,6).stream().skip(2).forEach(System.out::print);
+
+        System.out.println();
+        //拆分合并流操作 concat 将两个Stream合并成一个
+        Stream<Integer> streamFir = Arrays.asList(1,2,3).stream();
+        Stream<String> streamSec = Arrays.asList("a", "b", "c").stream();
+
+        Stream.concat(streamFir, streamSec).forEach(System.out::print);
+
+        //流排序 sorted 无参
     }
 }
