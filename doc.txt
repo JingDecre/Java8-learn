@@ -11,3 +11,9 @@ Stream可以执行并行操作
 链接：https://www.jianshu.com/p/cbd5713a8f26
 來源：简书
 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+二、Stream 常见的操作
+过滤操作filter,distinct
+变换操作map,flatMap
+拆分合并流操作limit,skip,concat,peek
+排序操作sorted,unordered
