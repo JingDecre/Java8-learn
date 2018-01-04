@@ -91,5 +91,13 @@ public class StreamTest {
         Arrays.asList("ae", "cf", "ag", "dec", "run", "caac").stream().sorted(
                 Comparator.comparing(String::length).reversed()
         ).forEach(System.out::print);
+
+        System.out.println();
+        //parallel().sorted(),不能直接使用forEach，要使用forEachOrdered(),由于parallel是并行操作，所以使用forEach执行时，是随机的
+        Arrays.asList(1,3,5,6,2,34,22,73).stream().parallel().sorted().forEach(System.out::println);
+        Arrays.asList(1,3,5,6,2,34,22,73).stream().parallel().sorted().forEachOrdered(System.out::println);
+
+
+
     }
 }

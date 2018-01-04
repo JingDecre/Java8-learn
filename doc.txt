@@ -17,3 +17,5 @@ Stream可以执行并行操作
 变换操作map,flatMap
 拆分合并流操作limit,skip,concat,peek
 排序操作sorted,unordered
+
+parallelStream其实就是一个并行执行的流.它通过默认的ForkJoinPool,可能提高你的多线程任务的速度.
