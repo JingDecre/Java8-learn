@@ -1,3 +1,19 @@
+*传统流
+	     字节流	        字符流
+输入流	InputStream 	Reader
+输出流	OutputStream	Writer
+1. 处理的数据单位不同，可分为：字符流，字节流
+
+2.数据流方向不同，可分为：输入流，输出流
+
+3.功能不同，可分为：节点流，处理流
+
+节点流：节点流从一个特定的数据源读写数据。即节点流是直接操作文件，网络等的流，例如FileInputStream和FileOutputStream，他们直接从文件中读取或往文件中写入字节流。
+
+处理流：“连接”在已存在的流（节点流或处理流）之上通过对数据的处理为程序提供更为强大的读写功能。过滤流是使用一个已经存在的输入流或输出流连接创建的，过滤流就是对节点流进行一系列的包装。
+例如BufferedInputStream和BufferedOutputStream，使用已经存在的节点流来构造，提供带缓冲的读写，提高了读写的效率，以及DataInputStream和DataOutputStream，使用已经存在的节点流来构造，提供了读写Java中的基本数据类型的功能
+
+
 一、Stream  特点：
 Stream不存储数据
 Stream不会修改源数据，无论怎么操作源数据并不会改变
@@ -19,3 +35,17 @@ Stream可以执行并行操作
 排序操作sorted,unordered
 
 parallelStream其实就是一个并行执行的流.它通过默认的ForkJoinPool,可能提高你的多线程任务的速度.
+
+三、Lambda表达式
+编译器负责推导lambda表达式的类型。它利用lambda表达式所在上下文所期待的类型进行推导，这个被期待的类型被称为目标类型。lambda表达式只能出现在目标类型为函数式接口的上下文中。
+
+当然，lambda表达式对目标类型也是有要求的。编译器会检查lambda表达式的类型和目标类型的方法签名（method signature）是否一致。
+
+^当且仅当下面所有条件均满足时，lambda表达式才可以被赋给目标类型T：
+
+ T是一个函数式接口
+ lambda表达式的参数和T的方法参数在数量和类型上一一对应
+ lambda表达式的返回值和T的方法返回值相兼容（Compatible）
+ lambda表达式内所抛出的异常和T的方法throws类型相兼容
+示例：
+ Callable<String> c = () -> "done"; （Callable<String> 即为T函数式接口)

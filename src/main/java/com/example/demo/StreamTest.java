@@ -47,7 +47,7 @@ public class StreamTest {
         //变换操作,Map
         Arrays.asList("hadfa", "abc", "adce", "yui").stream().map(s->s.toUpperCase()+",").forEach(System.out::print);
 
-        //变换操作, flatMap 高纬度流变为低纬度流
+        //变换操作, flatMap 高纬度流变为低纬度流,每个元素转换得到的是Stream对象，会把子Stream中的元素压缩到父集合
         String [] str1 = {"a", "b", "c"};
         String [] str2 = {"d", "e", "f"};
         String [] str3 = {"a", "g", "h"};
@@ -96,8 +96,6 @@ public class StreamTest {
         //parallel().sorted(),不能直接使用forEach，要使用forEachOrdered(),由于parallel是并行操作，所以使用forEach执行时，是随机的
         Arrays.asList(1,3,5,6,2,34,22,73).stream().parallel().sorted().forEach(System.out::println);
         Arrays.asList(1,3,5,6,2,34,22,73).stream().parallel().sorted().forEachOrdered(System.out::println);
-
-
 
     }
 }
